@@ -580,6 +580,7 @@ app.post("/role-assign", verifytoken, (req, res) => {
   );
 });
 app.post("/add-team", verifytoken, (req, res) => {
+  console.log(req.body);
   con.query(
     "SELECT * FROM `team` WHERE `Team_name`=?",
     [req.body.team],
@@ -600,7 +601,7 @@ app.post("/add-team", verifytoken, (req, res) => {
               throw err;
             }
             if (result) {
-              res.status(200).json({
+              res.status(201).json({
                 error: false,
                 status: true,
                 massage: "Your Team Added SuccessFully",
@@ -669,10 +670,10 @@ app.post("/add-player",upload_player.single("img"),verifytoken,(req, res) => {
     con.query(
       "INSERT INTO `player`(`player_name`, `image`, `age`, `player_type`, `place`) VALUES (?,?,?,?,?)",
       [
-        req.body.playername,
+        req.body.player,
         req.file.filename,
         req.body.age,
-        req.body.player_type,
+        req.body.playertype,
         req.body.place,
       ],
       (err, result) => {
@@ -681,7 +682,7 @@ app.post("/add-player",upload_player.single("img"),verifytoken,(req, res) => {
           res.status(200).json({
             status: true,
             error: false,
-            massage: "added SuccessFully",
+            massage: "Added SuccessFully",
           });
         }
       }
@@ -729,12 +730,14 @@ app.post("/del-player", verifytoken, (req, res) => {
 });
 app.post("/update-player",upload_player.single("img"),verifytoken,
   (req, res) => {
+    console.log(req.body);
     con.query(
-      "UPDATE `player` SET `player_name`=?,`image`=?,`age`=?,`player_type`=?,`place`=?,`status`=? WHERE `id`=?",
+      "UPDATE `player` SET `player_name`=?,`image`=?,`age`=?,`player_type`=?,`place`=? WHERE `id`=?",
       [
         req.body.playername,
-        req.file.fieldname,
+        req.file.filename,
         req.body.age,
+        req.body.player_type,
         req.body.place,
         req.body.id,
       ],
@@ -756,7 +759,7 @@ app.post("/update-img-player",upload_player.single("img"),verifytoken,
       (err, result) => {
         if (err) throw err;
         if (result) {
-          res.status(200).send("Image Update SuccessFully");
+          res.status(200).send(true);
         }
       }
     );
@@ -836,13 +839,15 @@ app.post("/del-series", verifytoken, (req, res) => {
   );
 });
 app.post("/update-series", verifytoken, (req, res) => {
+  console.log(req.body);
   con.query(
-    "UPDATE `series` SET `Tournament_name`=?,`Match_type`=?,`ground_name`=?,`Bowl_type`=? WHERE `id`=?",
+    "UPDATE `series` SET `Tournament_name`=?,`Match_type`=?,`series_type`=?,`ground_name`=?,`Bowl_type`=? WHERE `id`=?",
     [
-      req.body.tournamnet,
-      req.body.matchtype,
-      req.body.groundname,
-      req.body.bowltype,
+      req.body.Tournament,
+      req.body.match,
+      req.body.series,
+      req.body.ground,
+      req.body.bowl,
       req.body.id,
     ],
     (err, result) => {
