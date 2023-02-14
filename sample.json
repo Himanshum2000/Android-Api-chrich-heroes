@@ -1,0 +1,326 @@
+[
+    {
+        "id": 1,
+        "slugId": 14,
+        "slugname": "CONGRESS HOLI",
+        "slugimage": "add_slug-1662283679686-280515336.png",
+        "catId": 43,
+        "Catname": "Festivals",
+        "Catimage": "add_cat-1662283486801-298957699.png",
+        "subcatId": 17,
+        "Subcatname": "Holi",
+        "Subcatimage": "add_sub_cat-1662283535813-230624577.png",
+        "status": "Y",
+        "createOn": "2022-09-22T09:28:58.000Z"
+    },
+    {
+        "id": 2,
+        "slugId": 16,
+        "slugname": "Businessman style",
+        "slugimage": "add_slug-1663051353073-877731686.png",
+        "catId": 43,
+        "Catname": "Festivals",
+        "Catimage": "add_cat-1662283486801-298957699.png",
+        "subcatId": 17,
+        "Subcatname": "Holi",
+        "Subcatimage": "add_sub_cat-1662283535813-230624577.png",
+        "status": "Y",
+        "createOn": "2022-09-22T09:28:58.000Z"
+    },
+    {
+        "id": 3,
+        "slugId": 18,
+        "slugname": " 5 years experience developer",
+        "slugimage": "add_slug-1663051690656-634079210.png",
+        "catId": 43,
+        "Catname": "Festivals",
+        "Catimage": "add_cat-1662283486801-298957699.png",
+        "subcatId": 17,
+        "Subcatname": "Holi",
+        "Subcatimage": "add_sub_cat-1662283535813-230624577.png",
+        "status": "Y",
+        "createOn": "2022-09-22T09:28:58.000Z"
+    },
+    {
+        "id": 4,
+        "slugId": 17,
+        "slugname": "Freshers celebration",
+        "slugimage": "add_slug-1663051623567-10970673.png",
+        "catId": 43,
+        "Catname": "Festivals",
+        "Catimage": "add_cat-1662283486801-298957699.png",
+        "subcatId": 17,
+        "Subcatname": "Holi",
+        "Subcatimage": "add_sub_cat-1662283535813-230624577.png",
+        "status": "Y",
+        "createOn": "2022-09-22T09:28:58.000Z"
+    },
+    {
+        "id": 5,
+        "slugId": 15,
+        "slugname": "BJP HOLI",
+        "slugimage": "add_slug-1662283691843-48171334.png",
+        "catId": 43,
+        "Catname": "Festivals",
+        "Catimage": "add_cat-1662283486801-298957699.png",
+        "subcatId": 17,
+        "Subcatname": "Holi",
+        "Subcatimage": "add_sub_cat-1662283535813-230624577.png",
+        "status": "Y",
+        "createOn": "2022-09-22T09:28:58.000Z"
+    },
+    {
+        "id": 6,
+        "slugId": 16,
+        "slugname": "Businessman style",
+        "slugimage": "add_slug-1663051353073-877731686.png",
+        "catId": 44,
+        "Catname": "International Programmer's day",
+        "Catimage": "add_cat-1663050093974-896633895.png",
+        "subcatId": 19,
+        "Subcatname": "Programmers celibration",
+        "Subcatimage": "add_sub_cat-1663050763025-692632444.png",
+        "status": "Y",
+        "createOn": "2022-09-22T09:29:17.000Z"
+    },
+    {
+        "id": 7,
+        "slugId": 17,
+        "slugname": "Freshers celebration",
+        "slugimage": "add_slug-1663051623567-10970673.png",
+        "catId": 44,
+        "Catname": "International Programmer's day",
+        "Catimage": "add_cat-1663050093974-896633895.png",
+        "subcatId": 19,
+        "Subcatname": "Programmers celibration",
+        "Subcatimage": "add_sub_cat-1663050763025-692632444.png",
+        "status": "Y",
+        "createOn": "2022-09-22T09:29:17.000Z"
+    },
+    {
+        "id": 8,
+        "slugId": 16,
+        "slugname": "Businessman style",
+        "slugimage": "add_slug-1663051353073-877731686.png",
+        "catId": 43,
+        "Catname": "Festivals",
+        "Catimage": "add_cat-1662283486801-298957699.png",
+        "subcatId": 18,
+        "Subcatname": "Businessman ",
+        "Subcatimage": "add_sub_cat-1663050461884-351806552.png",
+        "status": "Y",
+        "createOn": "2022-09-22T09:29:37.000Z"
+    },
+    {
+        "id": 11,
+        "slugId": 14,
+        "slugname": "CONGRESS HOLI",
+        "slugimage": "add_slug-1662283679686-280515336.png",
+        "catId": 43,
+        "Catname": "Festivals",
+        "Catimage": "add_cat-1662283486801-298957699.png",
+        "subcatId": 19,
+        "Subcatname": "Programmers celibration",
+        "Subcatimage": "add_sub_cat-1663050763025-692632444.png",
+        "status": "Y",
+        "createOn": "2022-09-22T09:44:04.000Z"
+    },
+    {
+        "id": 12,
+        "slugId": 15,
+        "slugname": "BJP HOLI",
+        "slugimage": "add_slug-1662283691843-48171334.png",
+        "catId": 43,
+        "Catname": "Festivals",
+        "Catimage": "add_cat-1662283486801-298957699.png",
+        "subcatId": 19,
+        "Subcatname": "Programmers celibration",
+        "Subcatimage": "add_sub_cat-1663050763025-692632444.png",
+        "status": "Y",
+        "createOn": "2022-09-22T09:44:04.000Z"
+    },
+    {
+        "id": 13,
+        "slugId": 16,
+        "slugname": "Businessman style",
+        "slugimage": "add_slug-1663051353073-877731686.png",
+        "catId": 43,
+        "Catname": "Festivals",
+        "Catimage": "add_cat-1662283486801-298957699.png",
+        "subcatId": 19,
+        "Subcatname": "Programmers celibration",
+        "Subcatimage": "add_sub_cat-1663050763025-692632444.png",
+        "status": "Y",
+        "createOn": "2022-09-22T09:44:04.000Z"
+    },
+    {
+        "id": 14,
+        "slugId": 14,
+        "slugname": "CONGRESS HOLI",
+        "slugimage": "add_slug-1662283679686-280515336.png",
+        "catId": 43,
+        "Catname": "Festivals",
+        "Catimage": "add_cat-1662283486801-298957699.png",
+        "subcatId": 20,
+        "Subcatname": "Developer celebration ",
+        "Subcatimage": "add_sub_cat-1663051456339-307987347.png",
+        "status": "Y",
+        "createOn": "2022-09-22T09:44:34.000Z"
+    },
+    {
+        "id": 15,
+        "slugId": 17,
+        "slugname": "Freshers celebration",
+        "slugimage": "add_slug-1663051623567-10970673.png",
+        "catId": 43,
+        "Catname": "Festivals",
+        "Catimage": "add_cat-1662283486801-298957699.png",
+        "subcatId": 20,
+        "Subcatname": "Developer celebration ",
+        "Subcatimage": "add_sub_cat-1663051456339-307987347.png",
+        "status": "Y",
+        "createOn": "2022-09-22T09:44:34.000Z"
+    },
+    {
+        "id": 16,
+        "slugId": 16,
+        "slugname": "Businessman style",
+        "slugimage": "add_slug-1663051353073-877731686.png",
+        "catId": 43,
+        "Catname": "Festivals",
+        "Catimage": "add_cat-1662283486801-298957699.png",
+        "subcatId": 20,
+        "Subcatname": "Developer celebration ",
+        "Subcatimage": "add_sub_cat-1663051456339-307987347.png",
+        "status": "Y",
+        "createOn": "2022-09-22T09:44:34.000Z"
+    }
+]
+
+[
+    {
+        "id": 1,
+        "catId": 43,
+        "Catname": "Festivals",
+        "Catimage": "add_cat-1662283486801-298957699.png",
+        "status": "Y",
+        "createOn": "2022-09-22T09:28:58.000Z",
+        "subcat-details": [
+            {
+                "subcatId": 17,
+                "Subcatname": "Holi",
+                "Subcatimage": "add_sub_cat-1662283535813-230624577.png",
+                "slug-details": [
+                    {
+                        "slugId": 14,
+                        "slugname": "CONGRESS HOLI",
+                        "slugimage": "add_slug-1662283679686-280515336.png"
+                    },
+                    {
+                        "slugId": 16,
+                        "slugname": "Businessman style",
+                        "slugimage": "add_slug-1663051353073-877731686.png"
+                    },
+                    {
+                        "slugId": 18,
+                        "slugname": " 5 years experience developer",
+                        "slugimage": "add_slug-1663051690656-634079210.png"
+                    },
+                    {
+                        "slugId": 17,
+                        "slugname": "Freshers celebration",
+                        "slugimage": "add_slug-1663051623567-10970673.png"
+                    },
+                    {
+                        "slugId": 15,
+                        "slugname": "BJP HOLI",
+                        "slugimage": "add_slug-1662283691843-48171334.png"
+                    }
+                ]
+            },
+            {
+                "subcatId": 20,
+                "Subcatname": "Developer celebration ",
+                "Subcatimage": "add_sub_cat-1663051456339-307987347.png",
+                "slug-details": [
+                    {
+                        "slugId": 14,
+                        "slugname": "CONGRESS HOLI",
+                        "slugimage": "add_slug-1662283679686-280515336.png"
+                    },
+                    {
+                        "slugId": 17,
+                        "slugname": "Freshers celebration",
+                        "slugimage": "add_slug-1663051623567-10970673.png"
+                    },
+                    {
+                        "slugId": 16,
+                        "slugname": "Businessman style",
+                        "slugimage": "add_slug-1663051353073-877731686.png"
+                    }
+                ]
+            },
+            {
+                "subcatId": 18,
+                "Subcatname": "Businessman ",
+                "Subcatimage": "add_sub_cat-1663050461884-351806552.png",
+                "slug-details": [
+                    {
+                        "slugId": 16,
+                        "slugname": "Businessman style",
+                        "slugimage": "add_slug-1663051353073-877731686.png"
+                    }
+                ]
+            },
+            {
+                "subcatId": 19,
+                "Subcatname": "Programmers celibration",
+                "Subcatimage": "add_sub_cat-1663050763025-692632444.png",
+                "slug-details": [
+                    {
+                        "slugId": 14,
+                        "slugname": "CONGRESS HOLI",
+                        "slugimage": "add_slug-1662283679686-280515336.png"
+                    },
+                    {
+                        "slugId": 15,
+                        "slugname": "BJP HOLI",
+                        "slugimage": "add_slug-1662283691843-48171334.png"
+                    },
+                    {
+                        "slugId": 16,
+                        "slugname": "Businessman style",
+                        "slugimage": "add_slug-1663051353073-877731686.png"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "catId": 44,
+        "Catname": "International Programmer's day",
+        "Catimage": "add_cat-1663050093974-896633895.png",
+        "status": "Y",
+        "createOn": "2022-09-22T09:29:17.000Z",
+        "subcat-details": [
+            {
+                "subcatId": 19,
+                "Subcatname": "Programmers celibration",
+                "Subcatimage": "add_sub_cat-1663050763025-692632444.png",
+                "slug-details": [
+                    {
+                        "slugId": 16,
+                        "slugname": "Businessman style",
+                        "slugimage": "add_slug-1663051353073-877731686.png"
+                    },
+                    {
+                        "slugId": 17,
+                        "slugname": "Freshers celebration",
+                        "slugimage": "add_slug-1663051623567-10970673.png"
+                    }
+                ]
+            }
+        ]
+    }
+]

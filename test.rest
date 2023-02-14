@@ -1,0 +1,77 @@
+POST http://localhost:4500/admin/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "xyz",
+    "password": "123456"
+}
+###
+POST http://localhost:4500/admin/register HTTP/1.1
+content-type: application/json
+
+{
+    "username": "abc",
+    "password": "123456"
+}
+###
+POST http://localhost:4500/admin/assign-module HTTP/1.1
+content-type: application/json
+
+{
+    "username": "abc",
+    "password": "123456"
+}
+###
+POST http://localhost:4500/admin/get-menu HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inh5eiIsImlhdCI6MTY2NTIxNDkzMH0.cuT9MeMYj8jWCOZP63ZXw2rjd24RNi4zqKAtdJewXnQ
+
+{
+    "username": "xyz",
+    "password": "123456"
+}
+###
+POST http://localhost:4500/admin/register HTTP/1.1
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inh5eiIsImlhdCI6MTY2NTQ3NjUzOH0.Xn9z2c8Jk8UDdvH6V3xXIoIBLLXGr_qls48U2gAsciY
+
+{
+    "username": "abc",
+    "password":"123456"
+}
+###
+POST http://localhost:4500/admin/role-assign HTTP/1.1
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inh5eiIsImlhdCI6MTY2NTQ3NjUzOH0.Xn9z2c8Jk8UDdvH6V3xXIoIBLLXGr_qls48U2gAsciY
+
+{
+    "username": "xyz",
+    "role_id":"5",
+    "user_id":"14"
+}
+###
+POST http://localhost:4500/admin/assign-module HTTP/1.1
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inh5eiIsImlhdCI6MTY2NTQ3NjUzOH0.Xn9z2c8Jk8UDdvH6V3xXIoIBLLXGr_qls48U2gAsciY
+
+{
+    "username": "xyz",
+    "role_id":"3",
+    "module":[1,2,5,6,7,9,11,12,13,18,20]
+}
+###
+POST http://localhost:4500/user/get-all HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inh5eiIsImlhdCI6MTY2NTE0ODUzM30.qoWryGnPFZxKjKUOOtF0Mng6VEeebUFbvW1joZw7hxw
+
+{
+    "username": "hlo"
+}
+###
+POST http://localhost:4500/user//get-all-subcat HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inh5eiIsImlhdCI6MTY2NTE0ODUzM30.qoWryGnPFZxKjKUOOtF0Mng6VEeebUFbvW1joZw7hxw
+
+{
+    "username": "hlo"
+}
