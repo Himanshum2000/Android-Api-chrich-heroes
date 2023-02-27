@@ -48,6 +48,7 @@ app.get("/get-all", (req, res) => {
   res.send("Hello, this url for testing Purpose ton create");
 });
 app.post("/register", (req, res) => {
+  console.log(req.body);
   const salt = bcrypt.genSaltSync(10);
   const hash = bcrypt.hashSync(req.body.password, salt);
   con.query(
@@ -750,7 +751,6 @@ app.post("/update-player",upload_player.single("img"),verifytoken,
     );
   }
 );
-
 app.post("/update-img-player",upload_player.single("img"),verifytoken,
   (req, res) => {
     con.query(
@@ -888,7 +888,7 @@ app.post("/add-match", verifytoken, (req, res) => {
         });
       } else {
         con.query(
-          "INSERT INTO `matches`(`team_1`, `team_2`, `series_name`, `win_toss`, `match_no`, `result`,`date_and_time`) VALUES (?,?,?,?,?,?,?)",
+          "INSERT INTO `matches`(`team_1`, `team_2`, `series_name`, `win_toss`, `match_no`, `result`,`date_time`) VALUES (?,?,?,?,?,?,?)",
           [
             req.body.team_1,
             req.body.team_2,
@@ -913,7 +913,6 @@ app.post("/add-match", verifytoken, (req, res) => {
     }
   );
 });
-
 app.post("/get-match", verifytoken, (req, res) => {
   con.query("SELECT * FROM `matches`", (err, result) => {
     if (err) {
@@ -924,7 +923,6 @@ app.post("/get-match", verifytoken, (req, res) => {
     }
   });
 });
-
 app.post("/get-match-status", verifytoken, (req, res) => {
   con.query(
     "SELECT * FROM `matches` WHERE `id`=?",
@@ -937,25 +935,23 @@ app.post("/get-match-status", verifytoken, (req, res) => {
     }
   );
 });
-
 app.post("/del-match", verifytoken, (req, res) => {
-  con.query("DELETE FROM `matches`", (err, result) => {
+  con.query("DELETE FROM `matches` WHERE `id`=?",[req.body.id], (err, result) => {
     if (err) throw err;
     if (result) {
-      res.status(200).send("Delete Successfully");
+      res.status(200).send(true);
     }
   });
 });
-
 app.post("/update-match", verifytoken, (req, res) => {
   con.query(
-    "UPDATE `matches` SET `team_1`=?,`team_2`=?,`series_name`=?,`win_toss`=?,`match_no`=?,`result`=?,`date_and_time`=? WHERE `id`=?",
+    "UPDATE `matches` SET `team_1`=?,`team_2`=?,`series_name`=?,`win_toss`=?,`match_no`=?,`result`=?,`date_time`=? WHERE `id`=?",
     [
-      req.body.team1,
-      req.body.team2,
+      req.body.team_1,
+      req.body.team_2,
       req.body.seriesname,
       req.body.toss,
-      req.body.matchno,
+      req.body.match_no,
       req.body.result,
       req.body.date,
       req.body.id,
@@ -968,7 +964,6 @@ app.post("/update-match", verifytoken, (req, res) => {
     }
   );
 });
-
 app.post("/update-match-id", verifytoken, (req, res) => {
   con.query(
     "UPDATE `matches` SET `team_1`=?,`team_2`=?,`time`=?,`win_toss`=?,`match_no`=?,`result`=?,`date_and_time`=?, WHERE `series_name`=?,id`=?",
@@ -991,7 +986,7 @@ app.post("/update-match-id", verifytoken, (req, res) => {
   );
 });
 
-app.post("/add-practice", (req, res) => {
+app.post("/add-practice", verifytoken, (req, res) => {
   con.query(
     "SELECT * FROM `practice` WHERE `email`=?",
     [req.body.email],
@@ -1030,8 +1025,7 @@ app.post("/add-practice", (req, res) => {
     }
   );
 });
-
-app.post("/get-practice",(req, res) => {
+app.post("/get-practice", verifytoken,(req, res) => {
   con.query("SELECT * FROM `practice`", (err, result) => {
     if (err) {
       throw err;
@@ -1041,16 +1035,14 @@ app.post("/get-practice",(req, res) => {
     }
   });
 });
-
 app.post("/del-practice", verifytoken, (req, res) => {
   con.query("DELETE FROM `practice` where `id`=?",[req.body.id],(err, result) => {
     if (err) throw err;
     if (result) {
-      res.status(200).send("true");
+      res.status(200).send(true);
     }
   });
-});
-
+});                             
 app.post("/update-practice",  verifytoken, (req, res) => {
   console.log(req.body);
   con.query(
@@ -1112,7 +1104,6 @@ app.post("/add-details",upload_player.single("img"), (req, res) => {
     }
   );
 });
-
 app.post("/get-details", verifytoken, (req, res) => {
   con.query("SELECT * FROM `details`", (err, result) => {
     if (err) {
@@ -1123,7 +1114,6 @@ app.post("/get-details", verifytoken, (req, res) => {
     }
   });
 });
-
 app.post("/del-details", verifytoken, (req, res) => {
   con.query("DELETE FROM `details` where `id`=?",[req.body.id],(err, result) => {
     if (err) throw err;
@@ -1155,9 +1145,5 @@ function verifytoken(req, res, next) {
     res.sendStatus(403);
   }
 }
-
-
-
-
 
 module.exports = app;
