@@ -74,6 +74,7 @@ app.post("/register", (req, res) => {
   );
 });
 app.post("/login", (req, res) => {
+  console.log(req.body);
   con.query(
     "select * from login where username = ?",
     [req.body.username],
@@ -252,7 +253,10 @@ app.post("/get-role-assign", verifytoken, (req, res) => {
     res.status(200).json({ data: result });
   });
 });
-app.post("/add-banner",upload_banner.single("add_banner"),verifytoken,
+app.post(
+  "/add-banner",
+  upload_banner.single("add_banner"),
+  verifytoken,
   (req, res) => {
     con.query(
       "SELECT * FROM `banner` WHERE name=?",
@@ -309,7 +313,11 @@ app.post("/status-banner", verifytoken, (req, res) => {
     }
   );
 });
-app.post("/update-banner",upload_banner.single("add_banner"),verifytoken,(req, res) => {
+app.post(
+  "/update-banner",
+  upload_banner.single("add_banner"),
+  verifytoken,
+  (req, res) => {
     con.query(
       "SELECT id FROM `banner` WHERE name=?",
       [req.body.name],
@@ -649,7 +657,7 @@ app.post("/update-team", verifytoken, (req, res) => {
           if (result) {
             res.status(200).send(true);
           }
-        }
+        };
       }
     }
   );
@@ -666,15 +674,17 @@ app.post("/status-team", verifytoken, (req, res) => {
     }
   );
 });
-app.post("/add-player",upload_player.single("img"),verifytoken,(req, res) => {
+app.post("/add-player",upload_player.single("img"),
+  verifytoken,
+  (req, res) => {
     console.log(req.file);
     con.query(
       "INSERT INTO `player`(`player_name`, `image`, `age`, `player_type`, `place`) VALUES (?,?,?,?,?)",
       [
-        req.body.player,
+        req.body.playername,
         req.file.filename,
         req.body.age,
-        req.body.playertype,
+        req.body.player_type,
         req.body.place,
       ],
       (err, result) => {
@@ -729,7 +739,10 @@ app.post("/del-player", verifytoken, (req, res) => {
     }
   );
 });
-app.post("/update-player",upload_player.single("img"),verifytoken,
+app.post(
+  "/update-player",
+  upload_player.single("img"),
+  verifytoken,
   (req, res) => {
     console.log(req.body);
     con.query(
@@ -751,7 +764,10 @@ app.post("/update-player",upload_player.single("img"),verifytoken,
     );
   }
 );
-app.post("/update-img-player",upload_player.single("img"),verifytoken,
+app.post(
+  "/update-img-player",
+  upload_player.single("img"),
+  verifytoken,
   (req, res) => {
     con.query(
       "UPDATE `player` SET `image`=? WHERE `id`=?",
@@ -936,12 +952,16 @@ app.post("/get-match-status", verifytoken, (req, res) => {
   );
 });
 app.post("/del-match", verifytoken, (req, res) => {
-  con.query("DELETE FROM `matches` WHERE `id`=?",[req.body.id], (err, result) => {
-    if (err) throw err;
-    if (result) {
-      res.status(200).send(true);
+  con.query(
+    "DELETE FROM `matches` WHERE `id`=?",
+    [req.body.id],
+    (err, result) => {
+      if (err) throw err;
+      if (result) {
+        res.status(200).send(true);
+      }
     }
-  });
+  );
 });
 app.post("/update-match", verifytoken, (req, res) => {
   con.query(
@@ -1025,7 +1045,7 @@ app.post("/add-practice", verifytoken, (req, res) => {
     }
   );
 });
-app.post("/get-practice", verifytoken,(req, res) => {
+app.post("/get-practice", verifytoken, (req, res) => {
   con.query("SELECT * FROM `practice`", (err, result) => {
     if (err) {
       throw err;
@@ -1036,14 +1056,18 @@ app.post("/get-practice", verifytoken,(req, res) => {
   });
 });
 app.post("/del-practice", verifytoken, (req, res) => {
-  con.query("DELETE FROM `practice` where `id`=?",[req.body.id],(err, result) => {
-    if (err) throw err;
-    if (result) {
-      res.status(200).send(true);
+  con.query(
+    "DELETE FROM `practice` where `id`=?",
+    [req.body.id],
+    (err, result) => {
+      if (err) throw err;
+      if (result) {
+        res.status(200).send(true);
+      }
     }
-  });
-});                             
-app.post("/update-practice",  verifytoken, (req, res) => {
+  );
+});
+app.post("/update-practice", verifytoken, (req, res) => {
   console.log(req.body);
   con.query(
     "UPDATE `practice` SET `title`=?,`firstname`=?,`lastname`=?,`email`=?,`dob`=?,`password`=?,`confirmpassword`=?WHERE `id`=?",
@@ -1066,7 +1090,7 @@ app.post("/update-practice",  verifytoken, (req, res) => {
   );
 });
 
-app.post("/add-details",upload_player.single("img"), (req, res) => {
+app.post("/add-details", upload_player.single("img"), (req, res) => {
   console.log(req.body);
   con.query(
     "SELECT * FROM `details` WHERE `fname`=?",
@@ -1083,12 +1107,7 @@ app.post("/add-details",upload_player.single("img"), (req, res) => {
         con.query(
           // const hash = bcrypt.hashSync(val.toString(), bcrypt.genSaltSync(12));
           "INSERT INTO `details`( `title`,`fname`,`email`, `phone`) VALUES (?,?,?,?)",
-          [
-            req.body.title,
-            req.body.name,
-            req.body.email,
-            req.body.phone,
-          ],
+          [req.body.title, req.body.name, req.body.email, req.body.phone],
           (err, result) => {
             if (err) throw err;
             if (result) {
@@ -1115,12 +1134,85 @@ app.post("/get-details", verifytoken, (req, res) => {
   });
 });
 app.post("/del-details", verifytoken, (req, res) => {
-  con.query("DELETE FROM `details` where `id`=?",[req.body.id],(err, result) => {
+  con.query(
+    "DELETE FROM `details` where `id`=?",
+    [req.body.id],
+    (err, result) => {
+      if (err) throw err;
+      if (result) {
+        res.status(200).send("true");
+      }
+    }
+  );
+});
+
+app.post("/add-service", upload_player.single("img"), (req, res) => {
+  console.log(req.file);
+  con.query(
+    "SELECT * FROM `service` WHERE `name`=?",
+    [req.body.firstname],
+    (err, result) => {
+      if (err) {
+        throw err;
+      }
+      if (result.length > 0) {
+        res.status(200).json({
+          error: true,
+          status: false,
+          massage: "Name All Ready Exist"});
+      } else {
+        con.query(
+          "INSERT INTO `service`(`name`,`email`,`image`,`number`) VALUES (?,?,?,?)",
+          [
+            req.body.firstname,
+            req.body.email,
+            req.file.filename,
+            req.body.number,
+          ],
+          (err, result) => {
+            if (err) throw err;
+            if (result) {
+              res.status(201).json({
+                status: true,
+                error: false,
+                massage: "Added SuccessFull",
+              });
+            }
+          }
+        );
+      }
+    }
+  );
+});
+
+app.post("/get-service", (req, res) => {
+  con.query("select * From `service`", (err, result) => {
     if (err) throw err;
     if (result) {
-      res.status(200).send("true");
+      res.status(200).send({ stattus: true, error: false, result: result });
     }
   });
+});
+app.post("/del-service", (req, res) => {
+  con.query(
+    "DELETE FROM `service` WHERE `id`=?",
+    [req.body.id],
+    (err, result) => {
+      if (err) {
+        throw err;
+      }
+      if (result) {
+        res.status(203).send(true);
+      }
+    }
+  );
+});
+app.post("/update-service", (req, res) => {
+  con.query("UPDATE ` service` SET `name`=?,`email`=? WHERE  `id`=?", [
+    req.body.name,
+    req.body.email,
+    req.body.id,
+  ]);
 });
 
 function verifytoken(req, res, next) {
@@ -1134,7 +1226,7 @@ function verifytoken(req, res, next) {
         res.sendStatus(403);
       } else {
         if (auth.username != req.body.username) {
-          console.log(auth.username   +" ==== "+req.body.username);
+          console.log(auth.username + " ==== " + req.body.username);
           res.status(403).send("false");
         } else {
           next();
