@@ -674,7 +674,9 @@ app.post("/status-team", verifytoken, (req, res) => {
     }
   );
 });
-app.post("/add-player",upload_player.single("img"),
+app.post(
+  "/add-player",
+  upload_player.single("img"),
   verifytoken,
   (req, res) => {
     console.log(req.file);
@@ -1070,7 +1072,7 @@ app.post("/del-practice", verifytoken, (req, res) => {
 app.post("/update-practice", verifytoken, (req, res) => {
   console.log(req.body);
   con.query(
-    "UPDATE `practice` SET `title`=?,`firstname`=?,`lastname`=?,`email`=?,`dob`=?,`password`=?,`confirmpassword`=?WHERE `id`=?",
+    "UPDATE `practice` SET `title`=?,`firstname`=?,`lastname`=?,`email`=?,`dob`=?,`password`=?,`confirmpassword`=? WHERE `id`=?",
     [
       req.body.title,
       req.body.firstname,
@@ -1159,7 +1161,8 @@ app.post("/add-service", upload_player.single("img"), (req, res) => {
         res.status(200).json({
           error: true,
           status: false,
-          massage: "Name All Ready Exist"});
+          massage: "Name All Ready Exist",
+        });
       } else {
         con.query(
           "INSERT INTO `service`(`name`,`email`,`image`,`number`) VALUES (?,?,?,?)",
@@ -1184,7 +1187,6 @@ app.post("/add-service", upload_player.single("img"), (req, res) => {
     }
   );
 });
-
 app.post("/get-service", (req, res) => {
   con.query("select * From `service`", (err, result) => {
     if (err) throw err;
@@ -1208,12 +1210,264 @@ app.post("/del-service", (req, res) => {
   );
 });
 app.post("/update-service", (req, res) => {
-  con.query("UPDATE ` service` SET `name`=?,`email`=? WHERE  `id`=?", [
-    req.body.name,
-    req.body.email,
+  con.query(
+    "UPDATE ` service` SET `name`=?,`email`=? WHERE  `id`=?",
+    [req.body.name, req.body.email, req.body.id],
+    (err, result) => {
+      if (err) throw err;
+      if (result) {
+        res.status(200).send(true);
+      }
+    }
+  );
+});
+// add tournament
+app.post(
+  "/add-tournaments",
+  upload_player.single("img"),
+  verifytoken,
+  (req, res) => {
+    console.log(req.file);
+    con.query(
+      "INSERT INTO `tournaments-add`(`image`, `text`, `location`, `date`) VALUES (?,?,?,?)",
+      [req.file.filename, req.body.message, req.body.address, req.body.date],
+      (err, result) => {
+        if (err) {
+          throw err;
+        } else {
+          res.status(201).json({
+            error: false,
+            status: true,
+            message: "Add SucessFull",
+          });
+        }
+      }
+    );
+  }
+);
+app.post("/get-tournament", (req, res) => {
+  con.query("SELECT * FROM `tournaments-add`", (err, result) => {
+    if (err) {
+      throw err;
+    }
+    if (result) {
+      res.status(200).send({ status: true, error: false, data: result });
+    }
+  });
+});
+app.post("/del-tournament", (req, res) => {
+  con.query(
+    "DELETE FROM `tournaments-add` WHERE `id`=?",
+    [req.body.id],
+    (err, result) => {
+      if (err) {
+        throw err;
+      }
+      if (result) {
+        res.status(203).send(true);
+      }
+    }
+  );
+});
+app.post("/update-tournament", (req, res) => {
+  con.query(
+    "UPDATE `tournaments-add` SET `text`=?,`location`=?,`date`=? WHERE `id`=?",
+    [req.body.text, req.body.location, req.body.date, req.body.id],
+    (err, result) => {
+      if (err) throw err;
+      if (result) {
+        res.status(200).send(true);
+      }
+    }
+  );
+});
+app.post("/update-img-tournament", (req, res) => {
+  con.query("UPDATE `tournaments-add` SET `image`=? WHERE `id`=?", [
+    req.file.filename,
     req.body.id,
   ]);
 });
+
+// market-add
+app.post(
+  "/add-market",
+  upload_player.single("img"),
+  verifytoken,
+  (req, res) => {
+    con.query(
+      "INSERT INTO `markert-add`(`text`, `image`, `date`, `location`) VALUES (?,?,?,?)",
+      [req.body.text, req.file.filename, req.body.date, req.body.location],
+      (err, result) => {
+        if (err) {
+          throw err;
+        } else {
+          res.status(201).json({
+            error: false,
+            status: true,
+            message: "Add SucessFull",
+          });
+        }
+      }
+    );
+  }
+);
+app.post("/get-market", (req, res) => {
+  con.query("SELECT * FROM `markert-add`", (err, result) => {
+    if (err) {
+      throw err;
+    }
+    if (result) {
+      res.status(200).send({ status: true, error: false, data: result });
+    }
+  });
+});
+app.post("/del-market", (req, res) => {
+  con.query(
+    "DELETE FROM `markert-add` WHERE `id`=?",
+    [req.body.id],
+    (err, result) => {
+      if (err) {
+        throw err;
+      }
+      if (result) {
+        res.status(203).send(true);
+      }
+    }
+  );
+});
+app.post("/update-market", (req, res) => {
+  con.query(
+    "UPDATE `markert-add` SET `text`=?,`date`=?,`location`=? WHERE `id`=?,"[
+      (req.body.text, req.body.location, req.body.date, req.body.id)
+    ],
+    (err, result) => {
+      if (err) throw err;
+      if (result) {
+        res.status(200).send(true);
+      }
+    }
+  );
+});
+// Benefits of Pro Membership
+app.post(
+  "/add-membership",
+  upload_player.single("img"),
+  verifytoken,
+  (req, res) => {
+    con.query(
+      "INSERT INTO `membership`(`head`,`text`, `image`) VALUES (?,?)",
+      [req.body.head, req.body.text, req.file.filename],
+      (err, result) => {
+        if (err) {
+          throw err;
+        } else {
+          res.status(201).json({
+            error: false,
+            status: true,
+            message: "Add SucessFull",
+          });
+        }
+      }
+    );
+  }
+);
+app.post("get-membership", (req, res) => {
+  con.query("SELECT * FROM `membership`", (err, result) => {
+    if (err) {
+      throw err;
+    }
+    if (result) {
+      res.status(200).send({ status: true, error: false, data: result });
+    }
+  });
+});
+app.post("/del-membership", (req, res) => {
+  con.query(
+    "DELETE FROM `membership` WHERE `id`=?",
+    [req.body.id],
+    (err, result) => {
+      if (err) {
+        throw err;
+      }
+      if (result) {
+        res.status(200).send(true);
+      }
+    }
+  );
+});
+app.post("/update-membership", (req, res) => {
+  con.query(
+    "UPDATE `membership` SET `text`=? WHERE `id`=?",
+    [req.body.text, req.body.id],
+    (err, result) => {
+      if (err) throw err;
+      if (result) {
+        res.status(200).send(true);
+      }
+    }
+  );
+});
+
+// looking card api
+app.post(
+  "/add-looking",
+  upload_player.single("img"),
+  verifytoken,
+  (req, res) => {
+    con.query(
+      "INSERT INTO `looking`(`image`, `text`) VALUES (?,?)",
+      [req.file.filename, req.body.text],
+      (err, result) => {
+        if (err) {
+          throw err;
+        } else {
+          res.status(201).json({
+            error: false,
+            status: true,
+            message: "Add SucessFull",
+          });
+        }
+      }
+    );
+  }
+);
+app.post("get-looking", (req, res) => {
+  con.query("SELECT * FROM `looking`", (err, result) => {
+    if (err) {
+      throw err;
+    }
+    if (result) {
+      res.status(200).send({ status: true, error: false, data: result });
+    }
+  });
+});
+app.post("/del-looking", (req, res) => {
+  con.query(
+    "DELETE FROM `looking` WHERE `id`=?",
+    [req.body.id],
+    (err, result) => {
+      if (err) {
+        throw err;
+      }
+      if (result) {
+        res.status(200).send(true);
+      }
+    }
+  );
+});
+app.post("/update-looking", (req, res) => {
+  con.query(
+    "UPDATE `looking` SET `text`=? WHERE `id`=?",
+    [req.body.text, req.body.id],
+    (err, result) => {
+      if (err) throw err;
+      if (result) {
+        res.status(200).send(true);
+      }
+    }
+  );
+});
+
 
 function verifytoken(req, res, next) {
   const bearerHeader = req.headers["authorization"];

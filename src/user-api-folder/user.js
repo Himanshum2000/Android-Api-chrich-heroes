@@ -428,6 +428,42 @@ app.post("/get-all-subcat", (req, res) => {
         }
     })
 })
+
+// add-tournament adds
+app.post("/get-tournament",(req, res) => {
+    con.query("SELECT * FROM `tournaments-add`", (err, result) => {
+      if (err) {
+        throw err;
+      }
+      if (result) {
+        res.status(200).send({ status: true, error: false, data: result });
+      }
+    });
+  });
+
+//   add market adds
+app.post("/get-market",(req,res)=>{
+    con.query("SELECT * FROM `markert-add`",(err,result)=>{
+      if(err){
+        throw err;
+      }
+      if(result){
+        res.status(200).send({ status: true, error: false, data: result });
+      }
+    })
+  });
+//   membership data get
+app.post("get-membership", (req, res) => {
+    con.query("SELECT * FROM `membership`", (err, result) => {
+      if (err) {
+        throw err;
+      }
+      if (result) {
+        res.status(200).send({ status: true, error: false, data: result });
+      }
+    });
+  });
+
 function verifytoken(req, res, next) {
     const bearerHeader = req.headers["authorization"];
     if (typeof bearerHeader !== "undefined") {
