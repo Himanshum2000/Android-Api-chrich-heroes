@@ -1229,8 +1229,8 @@ app.post(
   (req, res) => {
     console.log(req.file);
     con.query(
-      "INSERT INTO `tournaments-add`(`image`, `text`, `location`, `date`) VALUES (?,?,?,?)",
-      [req.file.filename, req.body.message, req.body.address, req.body.date],
+      "INSERT INTO `tournaments-add`(`image`, `text`, `location`, `date`,`type`) VALUES (?,?,?,?,?)",
+      [req.file.filename, req.body.message, req.body.address, req.body.date,req.body.type],
       (err, result) => {
         if (err) {
           throw err;
@@ -1431,7 +1431,8 @@ app.post(
     );
   }
 );
-app.post("get-looking", (req, res) => {
+
+app.post("/get-looking", (req, res) => {
   con.query("SELECT * FROM `looking`", (err, result) => {
     if (err) {
       throw err;
@@ -1441,6 +1442,8 @@ app.post("get-looking", (req, res) => {
     }
   });
 });
+
+
 app.post("/del-looking", (req, res) => {
   con.query(
     "DELETE FROM `looking` WHERE `id`=?",
@@ -1467,7 +1470,41 @@ app.post("/update-looking", (req, res) => {
     }
   );
 });
-
+// background  image change api
+app.post("/add-background", upload_player.single("img"),
+verifytoken,(req,res)=>{
+  con.query("INSERT INTO `banner_image`(`image`, `type`) VALUES (?,?)",
+  [req.file.filename,req.body.type],(err,result)=>{
+      if(err){
+        throw err;
+      }else{
+        res.status(201).json({
+          error: false,
+          status: true,
+          message: "Add SucessFull",
+        });
+      }
+  })
+});
+app.post("/get-background",(req,res)=>{
+  con.query("SELECT * FROM `banner_image` WHERE `type`=?",[req.body.type],(err,result)=>{
+    if(err){
+      throw err;
+    }if(result){
+      res.status(200).send({ status: true, error: false, data: result });
+    }
+  })
+});
+ app.post("/del-background",(req,res)=>{
+  con.query("DELETE FROM `banner_image` WHERE `id`=?",[req.body.id],(err,result)=>{
+    if(err){
+      throw err;
+    }
+    if(result){
+    res.status(200).send(true);
+    }
+  })
+ });
 
 function verifytoken(req, res, next) {
   const bearerHeader = req.headers["authorization"];

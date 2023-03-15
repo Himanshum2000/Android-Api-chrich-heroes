@@ -463,7 +463,19 @@ app.post("get-membership", (req, res) => {
       }
     });
   });
+// get looking data
+app.post("/get-looking", (req, res) => {
+    con.query("SELECT * FROM `looking`", (err, result) => {
+      if (err) {
+        throw err;
+      }
+      if (result) {
+        res.status(200).send({ status: true, error: false, data: result });
+      }
+    });
+  });
 
+  
 function verifytoken(req, res, next) {
     const bearerHeader = req.headers["authorization"];
     if (typeof bearerHeader !== "undefined") {
